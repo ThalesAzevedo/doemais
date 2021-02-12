@@ -3,7 +3,7 @@ using DoeMaisApi.src.Domain.Shared;
 
 namespace DoeMaisApi.src.Application.Contracts.BloodCenter
 {
-    public class CreateBloodCenterDTO
+    public class UpdateBloodCenterDTO
     {
         [Required(ErrorMessage = "Responsável pelo banco de sangue é obrigatório.")]
         public string Responsible {get; set;}
@@ -11,6 +11,5 @@ namespace DoeMaisApi.src.Application.Contracts.BloodCenter
         public string Address {get; set;}
         [Required(ErrorMessage = "Número de contato é obrigatório.")]
         public string PhoneNumber  {get; set;}
-        
     }
 }

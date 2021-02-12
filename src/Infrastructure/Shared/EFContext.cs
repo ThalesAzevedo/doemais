@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using DoeMaisApi.src.Infrastructure.Configurations.DonorAggregateConfigurations;
 using DoeMaisApi.src.Domain.Entities.DonorAggregate;
+using DoeMaisApi.src.Domain.Entities.BloodCenterAggregate;
+using DoeMaisApi.src.Infrastructure.Configurations.BloodCenterAggregateConfigurations;
 
 namespace DoeMaisApi.src.Infrastructure.Shared
 {
@@ -14,6 +16,7 @@ namespace DoeMaisApi.src.Infrastructure.Shared
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Donor>(new DonorEntityMapping().Configure);
+            modelBuilder.Entity<BloodCenter>(new BloodCenterEntityMapping().Configure);
             
         }
     }

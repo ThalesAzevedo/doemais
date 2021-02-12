@@ -3,8 +3,6 @@ using System.ComponentModel.DataAnnotations;
 namespace DoeMaisApi.src.Application.Contracts.Donor
 {
     public class CreateDonorDTO
-
-
     {
         [Required(ErrorMessage = "Nome de usuário é obrigatorio.")]
         [MinLength(3)]
@@ -21,6 +19,14 @@ namespace DoeMaisApi.src.Application.Contracts.Donor
         [Required(ErrorMessage = "CPF é obrigatório.")]
         [StringLength(11)]
         public string RegistrationId { get; set; }
+        [Required(ErrorMessage = "O nomde de usuário é obrigatório.")]
+        [MaxLength(1)]
+
+        public string Username { get; set; }
+        [Required(ErrorMessage = "A senha é obrigatória.")]
+        [MaxLength(1)]
+
+        public string Password { get; set; }
         [Required(ErrorMessage = "O gênero é obrigatório.")]
         [MaxLength(1)]
 

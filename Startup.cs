@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DoeMaisApi.src.Infrastructure.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,9 +12,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using DoeMaisApi.src.Domain.Entities.DonorAggregate.Repositories;
+using DoeMaisApi.src.Infrastructure.Shared;
 using DoeMaisApi.src.Application.Services;
 using DoeMaisApi.src.Infrastructure.Configurations.Repositories;
+using DoeMaisApi.src.Domain.Entities.DonorAggregate.Repositories;
+using DoeMaisApi.src.Domain.Entities.BloodCenterAggregate.Repositories;
 
 namespace DoeMaisApi
 {
@@ -40,6 +41,9 @@ namespace DoeMaisApi
 
             services.AddScoped<DonorAppService>();
             services.AddScoped<IDonorRepository, DonorRepository>();
+            
+            services.AddScoped<BloodCenterAppService>();
+            services.AddScoped<IBloodCenterRepository, BloodCenterRepository>();
 
             services.AddDbContext<EFContext>(options => {
                 options.UseSqlite(Configuration.GetConnectionString("sqlite"));
