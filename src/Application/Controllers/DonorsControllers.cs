@@ -12,16 +12,15 @@ using Microsoft.Extensions.Logging;
 namespace DoeMaisApi.src.Application.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class DonorsControllers : ControllerBase
+    [Route("api/donors")]
+    public class DonorControllers : ControllerBase
     {
         private readonly DonorAppService _donorAppService;
 
-        public DonorsControllers( DonorAppService donorAppService)
+        public DonorControllers( DonorAppService donorAppService)
         {
             _donorAppService = donorAppService?? throw new ArgumentNullException(nameof(donorAppService));
         }
-
 
         [HttpGet]
         public IActionResult GetAll()

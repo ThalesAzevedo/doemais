@@ -16,16 +16,29 @@ namespace DoeMaisApi.src.Application.Services
 
         public int Create(CreateDonorDTO createDonor )
         {
-            Donor donor = new Donor(createDonor.FirstName, createDonor.LastName, createDonor.BirthDate, createDonor.RegistrationId, createDonor.Username, createDonor.Password, createDonor.Gender, createDonor.BloodType
-            );
+            Donor donor = new Donor(createDonor.FirstName,
+                                    createDonor.LastName, 
+                                    createDonor.BirthDate, 
+                                    createDonor.RegistrationId, 
+                                    createDonor.Username, 
+                                    createDonor.Password, 
+                                    createDonor.Gender, 
+                                    createDonor.BloodType
+                                    );
             return _donorRepository.Create(donor);  
         }
 
         public void Updade(int donorId, UpdateDonorDTO updateDonor)
         {
             var donor = _donorRepository.GetById(donorId);
-            donor.Update(updateDonor.FirstName
-            , updateDonor.LastName, updateDonor.BirthDate, updateDonor.RegistrationId,updateDonor.Username, updateDonor.Password, updateDonor.Gender, updateDonor.BloodType
+            donor.Update(updateDonor.FirstName,
+                         updateDonor.LastName, 
+                         updateDonor.BirthDate, 
+                         updateDonor.RegistrationId,
+                         updateDonor.Username, 
+                         updateDonor.Password, 
+                         updateDonor.Gender, 
+                         updateDonor.BloodType
             );
             _donorRepository.Update(donor);
 

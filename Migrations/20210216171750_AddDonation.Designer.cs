@@ -2,14 +2,16 @@
 using DoeMaisApi.src.Infrastructure.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoeMaisApi.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20210216171750_AddDonation")]
+    partial class AddDonation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,36 +38,6 @@ namespace DoeMaisApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("blood_center");
-                });
-
-            modelBuilder.Entity("DoeMaisApi.src.Domain.Entities.DonationAggregate.Donation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Bloodcenter")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Donor")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Schedule")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("donations");
                 });
 
             modelBuilder.Entity("DoeMaisApi.src.Domain.Entities.DonorAggregate.Donor", b =>

@@ -17,6 +17,7 @@ using DoeMaisApi.src.Application.Services;
 using DoeMaisApi.src.Infrastructure.Configurations.Repositories;
 using DoeMaisApi.src.Domain.Entities.DonorAggregate.Repositories;
 using DoeMaisApi.src.Domain.Entities.BloodCenterAggregate.Repositories;
+using DoeMaisApi.src.Domain.Entities.DonationAggregate.Repositories;
 
 namespace DoeMaisApi
 {
@@ -44,6 +45,9 @@ namespace DoeMaisApi
             
             services.AddScoped<BloodCenterAppService>();
             services.AddScoped<IBloodCenterRepository, BloodCenterRepository>();
+            
+            services.AddScoped<DonationAppService>();
+            services.AddScoped<IDonationRepository, DonationRepository>();
 
             services.AddDbContext<EFContext>(options => {
                 options.UseSqlite(Configuration.GetConnectionString("sqlite"));

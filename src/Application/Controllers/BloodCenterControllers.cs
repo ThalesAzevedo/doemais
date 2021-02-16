@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DoeMaisApi.src.Application.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/bloodcenters")]
     public class BloodCenterControllers : ControllerBase
     {
         private readonly BloodCenterAppService _bloodcenterAppService;

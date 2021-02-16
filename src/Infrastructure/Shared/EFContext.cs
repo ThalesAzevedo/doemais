@@ -3,6 +3,8 @@ using DoeMaisApi.src.Infrastructure.Configurations.DonorAggregateConfigurations;
 using DoeMaisApi.src.Domain.Entities.DonorAggregate;
 using DoeMaisApi.src.Domain.Entities.BloodCenterAggregate;
 using DoeMaisApi.src.Infrastructure.Configurations.BloodCenterAggregateConfigurations;
+using DoeMaisApi.src.Domain.Entities.DonationAggregate;
+using DoeMaisApi.src.Infrastructure.Configurations.DonationAggregateConfigurations;
 
 namespace DoeMaisApi.src.Infrastructure.Shared
 {
@@ -17,6 +19,9 @@ namespace DoeMaisApi.src.Infrastructure.Shared
         {
             modelBuilder.Entity<Donor>(new DonorEntityMapping().Configure);
             modelBuilder.Entity<BloodCenter>(new BloodCenterEntityMapping().Configure);
+            modelBuilder.Entity<Donation>(new DonationEntityMapping().Configure);
+            
+            
             
         }
     }

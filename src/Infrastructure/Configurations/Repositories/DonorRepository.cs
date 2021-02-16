@@ -9,43 +9,43 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.Repositories
 {
     public class DonorRepository : IDonorRepository
     {
-        private readonly DbSet<Donor> _donors;
+        private readonly DbSet<Donor> _donorsDb;
         private readonly EFContext _context;
 
         public DonorRepository (EFContext context)
         {
             _context = context ?? throw new System.ArgumentNullException(nameof(context));
-            _donors = context.Set<Donor>();
+            _donorsDb = context.Set<Donor>();
         }
 
         public int Create (Donor donor)
         {
-            _donors.Add(donor);
+            _donorsDb.Add(donor);
             _context.SaveChanges();
             return donor.Id;
         }
 
         public Donor GetById(int donorId)
         {
-            var donor = _donors.Find(donorId);
+            var donor = _donorsDb.Find(donorId);
             if (donor == null) throw new KeyNotFoundException("Não foi encontrado usuário com este id.");
             return donor;
         }
 
         public IReadOnlyCollection<Donor> GetAll()
         {
-            return _donors.ToList();
+            return _donorsDb.ToList();
         }
 
         public void Remove(Donor donor)
         {
-            _donors.Remove(donor);
+            _donorsDb.Remove(donor);
             _context.SaveChanges();
         }
 
         public void Update(Donor donor)
         {
-            _donors.Update(donor);
+            _donorsDb.Update(donor);
             _context.SaveChanges();
         }
     }
