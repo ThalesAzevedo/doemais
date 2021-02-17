@@ -9,7 +9,7 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.DonorAggregateConfigurati
         public void Configure(EntityTypeBuilder<Donor> builder)
         {
             builder.ToTable("donor");
-            builder.HasKey(Donor => Donor.Id);
+            builder.HasKey(Donor => Donor.DonorId);
 
             builder.Property(Donor => Donor.FirstName)
             .IsRequired()
@@ -23,7 +23,6 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.DonorAggregateConfigurati
 
             builder.Property(Donor => Donor.BirthDate)
             .IsRequired()
-            .HasMaxLength(30)
             .HasColumnName("birth_date");
 
             builder.Property( Donor => Donor.BloodType)
@@ -41,11 +40,13 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.DonorAggregateConfigurati
             .HasMaxLength(11)
             .HasColumnName("registration_id");
 
-            // builder.Property(Donor => Donor.Localization)
-            // .IsRequired()
-            // .HasMaxLength(40)
-            // .HasColumnName("localization");
+            builder.Property(Donor => Donor.Localization)
+            .HasMaxLength(40)
+            .HasColumnName("localization");
 
+            builder.Property(Donor => Donor.CreatedAt)
+            .IsRequired()
+            .HasColumnName("created_at");
         }
     }
 }

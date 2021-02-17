@@ -1,17 +1,20 @@
 // using DoeMaisApi.src.Domain.Shared;
-using DoeMaisApi.src.Domain.Entities.PersonAggregate;
+using System;
+using System.Collections.Generic;
+using DoeMaisApi.src.Domain.Entities.DonationAggregate;
 
 namespace DoeMaisApi.src.Domain.Entities.DonorAggregate
 {
     public class Donor
 {
-        public Donor( string firstName, string lastName, string birthDate, string registrationId, string username, string password, string gender, string bloodType /*, string localization, string donations*/)
+        public Donor( string firstName, string lastName, DateTime birthDate, string registrationId, DateTime createdAt, string username, string password, string gender, string bloodType /*, string localization, string donations*/)
 
         {
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
             RegistrationId = registrationId;
+            CreatedAt = createdAt;
             Username = username;
             Password = password;
             Gender = gender;
@@ -21,19 +24,20 @@ namespace DoeMaisApi.src.Domain.Entities.DonorAggregate
 
         }
         
-        public int Id { get; set; }
+        public int DonorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public string RegistrationId { get; set; }
+        public DateTime CreatedAt { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Gender { get; set;} 
         public string BloodType { get; set;}
-        // public string Localization  { get; set;1}
-        // public string Donations { get; set;}
+        public string Localization { get; set;}
+        public ICollection<Donation> Donations { get; set;}
 
-        public void Update( string firstName, string lastName, string birthDate, string registrationId, string username, string password, string gender, string bloodType)
+        public void Update( string firstName, string lastName, DateTime birthDate, string registrationId, string username, string password, string gender, string bloodType)
         {
             FirstName = firstName;
             LastName = lastName;

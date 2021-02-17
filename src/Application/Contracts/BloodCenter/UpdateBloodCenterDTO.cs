@@ -5,6 +5,8 @@ namespace DoeMaisApi.src.Application.Contracts.BloodCenter
 {
     public class UpdateBloodCenterDTO
     {
+        [Required(ErrorMessage = "Nome da instituição é necessário.")]
+        public string Name { get; set; }
         [Required(ErrorMessage = "Responsável pelo banco de sangue é obrigatório.")]
         public string Responsible {get; set;}
         [Required(ErrorMessage = "Necessário definir a pessoa responsável.")]

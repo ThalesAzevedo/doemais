@@ -22,7 +22,7 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.Repositories
         {
             _bloodCenterDbTable.Add(bloodcenter);
             _context.SaveChanges();
-            return bloodcenter.Id;
+            return bloodcenter.BloodCenterId;
         }
 
         public BloodCenter GetById(int bloodcenterId)

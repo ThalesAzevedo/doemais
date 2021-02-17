@@ -9,7 +9,8 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.BloodCenterAggregateConfi
         public void Configure(EntityTypeBuilder<BloodCenter> builder)
         {
             builder.ToTable("blood_center");
-            builder.HasKey(BloodCenter => BloodCenter.Id);
+            builder.HasKey(BloodCenter => BloodCenter.BloodCenterId);
+            
 
             builder.Property(BloodCenter => BloodCenter.Responsible)
             .IsRequired();
@@ -20,6 +21,9 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.BloodCenterAggregateConfi
             builder.Property(BloodCenter => BloodCenter.PhoneNumber)
             .IsRequired();
 
+            builder.Property(BloodCenter => BloodCenter.CreatedAt)
+            .IsRequired();
+            
         }
     }
 }

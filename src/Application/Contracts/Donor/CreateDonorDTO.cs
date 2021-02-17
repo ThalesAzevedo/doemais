@@ -14,7 +14,6 @@ namespace DoeMaisApi.src.Application.Contracts.Donor
         [MaxLength(50)]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Data de nascimento é obrigatória.")]
-        [StringLength(8)]
         public string BirthDate { get; set; }
         [Required(ErrorMessage = "CPF é obrigatório.")]
         [StringLength(11)]

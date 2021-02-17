@@ -46,7 +46,7 @@ namespace DoeMaisApi.src.Application.Controllers
             };
         }
 
-        [HttpPut]
+        [HttpPut("{donationId}")]
         public IActionResult Update (int donationId, [FromBody] UpdateDonationDTO updateDonation)
         {
             try {

@@ -22,7 +22,7 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.Repositories
         {
             _donorsDb.Add(donor);
             _context.SaveChanges();
-            return donor.Id;
+            return donor.DonorId;
         }
 
         public Donor GetById(int donorId)

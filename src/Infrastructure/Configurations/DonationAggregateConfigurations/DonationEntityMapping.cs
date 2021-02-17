@@ -10,15 +10,15 @@ namespace DoeMaisApi.src.Infrastructure.Configurations.DonationAggregateConfigur
         public void Configure(EntityTypeBuilder<Donation> builder)
         {
             builder.ToTable("donations");
-            builder.HasKey(Donation => Donation.Id);
+            builder.HasKey(Donation => Donation.DonationId);
 
             builder.Property(Donation => Donation.CreatedAt);
             // .IsRequired();
             
-            builder.Property(Donation => Donation.Donor)
+            builder.Property(Donation => Donation.DonorId)
             .IsRequired();
             
-            builder.Property(Donation => Donation.Bloodcenter)
+            builder.Property(Donation => Donation.BloodcenterId)
             .IsRequired();
             
             builder.Property(Donation => Donation.Status)

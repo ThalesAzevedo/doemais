@@ -10,19 +10,18 @@ namespace DoeMaisApi.src.Infrastructure.Shared
 {
     public class EFContext : DbContext
     {
-        public virtual DbSet<Donor> Donor {get; set;}
+        public virtual DbSet<Donor> Donors {get; set;}
+        public virtual DbSet<Donation> Donations {get; set;}
+        public virtual DbSet<BloodCenter> BloodCenters {get; set;}
 
         public EFContext(DbContextOptions options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Donor>(new DonorEntityMapping().Configure);
-            modelBuilder.Entity<BloodCenter>(new BloodCenterEntityMapping().Configure);
-            modelBuilder.Entity<Donation>(new DonationEntityMapping().Configure);
-            
-            
-            
+            modelBuilder.ApplyConfiguration<Donor>(new DonorEntityMapping());
+            modelBuilder.ApplyConfiguration<BloodCenter>(new BloodCenterEntityMapping());
+            modelBuilder.ApplyConfiguration<Donation>(new DonationEntityMapping());
         }
     }
 }

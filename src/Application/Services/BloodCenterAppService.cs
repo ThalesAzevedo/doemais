@@ -2,6 +2,7 @@ using DoeMaisApi.src.Application.Contracts.BloodCenter;
 using DoeMaisApi.src.Domain.Entities.BloodCenterAggregate.Repositories;
 using DoeMaisApi.src.Domain.Entities.BloodCenterAggregate;
 using System.Collections.Generic;
+using System;
 
 namespace DoeMaisApi.src.Application.Services
 {
@@ -16,14 +17,20 @@ namespace DoeMaisApi.src.Application.Services
 
         public int Create(CreateBloodCenterDTO createBloodCenter )
         {
-            BloodCenter BloodCenter = new BloodCenter(createBloodCenter.Responsible, createBloodCenter.Address, createBloodCenter.PhoneNumber);
+            DateTime createdAt = DateTime.UtcNow;
+            BloodCenter BloodCenter = new BloodCenter(createBloodCenter.Name,
+                                                      createBloodCenter.Responsible,
+                                                      createBloodCenter.Address, 
+                                                      createBloodCenter.PhoneNumber,
+                                                      createdAt
+                                                      );
             return _bloodCenterRepository.Create(BloodCenter);  
         }
 
         public void Updade(int BloodCenterId, UpdateBloodCenterDTO updateBloodCenter)
         {
             var BloodCenter = _bloodCenterRepository.GetById(BloodCenterId);
-            BloodCenter.Update(updateBloodCenter.Responsible, updateBloodCenter.Address, updateBloodCenter.PhoneNumber);
+            BloodCenter.Update(updateBloodCenter.Name, updateBloodCenter.Responsible, updateBloodCenter.Address, updateBloodCenter.PhoneNumber);
             _bloodCenterRepository.Update(BloodCenter);
 
         }

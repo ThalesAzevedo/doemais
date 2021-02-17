@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DoeMaisApi.src.Application.Contracts.Donor;
 using DoeMaisApi.src.Domain.Entities.DonorAggregate;
@@ -16,10 +17,13 @@ namespace DoeMaisApi.src.Application.Services
 
         public int Create(CreateDonorDTO createDonor )
         {
+            DateTime parsedBirthDate = DateTime.Parse(createDonor.BirthDate);
+            DateTime createdAt = DateTime.UtcNow;
             Donor donor = new Donor(createDonor.FirstName,
                                     createDonor.LastName, 
-                                    createDonor.BirthDate, 
+                                    parsedBirthDate, 
                                     createDonor.RegistrationId, 
+                                    createdAt,
                                     createDonor.Username, 
                                     createDonor.Password, 
                                     createDonor.Gender, 
@@ -30,10 +34,11 @@ namespace DoeMaisApi.src.Application.Services
 
         public void Updade(int donorId, UpdateDonorDTO updateDonor)
         {
+            DateTime parsedBirthDate = DateTime.Parse(updateDonor.BirthDate);
             var donor = _donorRepository.GetById(donorId);
             donor.Update(updateDonor.FirstName,
                          updateDonor.LastName, 
-                         updateDonor.BirthDate, 
+                         parsedBirthDate, 
                          updateDonor.RegistrationId,
                          updateDonor.Username, 
                          updateDonor.Password, 
